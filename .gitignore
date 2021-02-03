@@ -1,0 +1,13 @@
+node_modules
+.env
+
+sequelize_migration_log.json
+
+sequelize_seed_log.json
+
+
+package-lock.json
+
+logs
+
+public/*
