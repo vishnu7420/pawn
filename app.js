@@ -34,96 +34,96 @@ app.use(function (req, res, next) {
 /** PASSPORT SETUP */
 
 /** Passport initialize */
-this.app.use(passport.initialize());
+// this.app.use(passport.initialize());
 
-/** Passport session */
-this.app.use(passport.session()); `  `
-
-
-/** Passport serialize */
-passport.serializeUser(function (user, cb) {
-  cb(null, user);
-});
-
-/** Passport deserialize */
-passport.deserializeUser(function (obj, cb) {
-  cb(null, obj);
-});
-
-/** Passport custom strategy */
-const SkeinStrategy = Strategy;
+// /** Passport session */
+// this.app.use(passport.session()); `  `
 
 
-/** User authentication */
-/**
- * @param req // req from url
- * @function callback // user data
- */
-passport.use('skein', new SkeinStrategy(async (req, callback) => {
+// /** Passport serialize */
+// passport.serializeUser(function (user, cb) {
+//   cb(null, user);
+// });
 
-  /** token and type of token */
-  let token = null,
-    type = 'jwt',
-    user = null;
+// /** Passport deserialize */
+// passport.deserializeUser(function (obj, cb) {
+//   cb(null, obj);
+// });
 
-
-
-  /** Checking token type */
-  /** Checking token type */
-  if ((req.headers.jwt != undefined || req.cookies.jwt != undefined || req.query.jwt != undefined || req.body.jwt != undefined)) {
-    type = 'jwt'
-    if (req.headers.jwt)
-      token = req.headers.jwt
-    else if (req.headers.jwt)
-      token = req.query.jwt
-    else if (req.cookies.jwt)
-      token = req.cookies.jwt
-    else if (req.body.jwt)
-      token = req.body.jwt
+// /** Passport custom strategy */
+// const SkeinStrategy = Strategy;
 
 
-    let options = this.jwtOptions;
+// /** User authentication */
+// /**
+//  * @param req // req from url
+//  * @function callback // user data
+//  */
+// passport.use('skein', new SkeinStrategy(async (req, callback) => {
 
-    let secret = this.secret;
-
-    if (!options) {
-      console.log("JWT options not set")
-      process.exit(1)
-    }
-
-    if (!secret) {
-      console.log("JWT secret not set")
-      process.exit(1)
-    }
-
-    try {
-      user = verify(token, secret, options);
-      user = decode(token)
-    } catch (err) {
-      callback(err, null)
-      return
-    }
-  }
+//   /** token and type of token */
+//   let token = null,
+//     type = 'jwt',
+//     user = null;
 
 
 
+//   /** Checking token type */
+//   /** Checking token type */
+//   if ((req.headers.jwt != undefined || req.cookies.jwt != undefined || req.query.jwt != undefined || req.body.jwt != undefined)) {
+//     type = 'jwt'
+//     if (req.headers.jwt)
+//       token = req.headers.jwt
+//     else if (req.headers.jwt)
+//       token = req.query.jwt
+//     else if (req.cookies.jwt)
+//       token = req.cookies.jwt
+//     else if (req.body.jwt)
+//       token = req.body.jwt
 
 
-  if (user) {
+//     let options = this.jwtOptions;
 
-    user['provider'] = type
-    user['token'] = token
+//     let secret = this.secret;
 
-    /** If user exists */
+//     if (!options) {
+//       console.log("JWT options not set")
+//       process.exit(1)
+//     }
 
-    callback(null, user)
+//     if (!secret) {
+//       console.log("JWT secret not set")
+//       process.exit(1)
+//     }
+
+//     try {
+//       user = verify(token, secret, options);
+//       user = decode(token)
+//     } catch (err) {
+//       callback(err, null)
+//       return
+//     }
+//   }
 
 
-  } else {
-    callback("User not found !", false)
-  }
 
-}))
+
+
+//   if (user) {
+
+//     user['provider'] = type
+//     user['token'] = token
+
+//     /** If user exists */
+
+//     callback(null, user)
+
+
+//   } else {
+//     callback("User not found !", false)
+//   }
+
+// }))
 
 
 // error handler

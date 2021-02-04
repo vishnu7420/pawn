@@ -61,7 +61,7 @@ const ShopController = {
 
 
 
-            new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Create)
+            new Response(res)._SuccessResponse(Message.ShopDetails.SuccessMessage.Create)
 
 
         }
@@ -102,7 +102,7 @@ const ShopController = {
                     res,
                     StatusCodes.OK
                 )._SuccessResponse(
-                    Message.UserManagement.SuccessMessage.Fetch,
+                    Message.ShopDetails.SuccessMessage.Fetch,
                     shop
                 )
 
@@ -114,11 +114,59 @@ const ShopController = {
                     res,
                     StatusCodes.NOT_FOUND
                 )._ErrorMessage(
-                    Message.UserManagement.FailureMessage.NotFound,
+                    Message.ShopDetails.FailureMessage.NotFound,
                 )
             }
         }
         catch (err) {
+
+
+            // if something went wrong
+            new SpErrorHandler(
+                res,
+                err
+            )
+        }
+    },
+
+    async login(req, res) {
+        try {
+
+
+            let {
+                owner_mobile_no,password
+            } = req.body
+
+            let [shop_login] = await ShopModel.getlogin({
+                owner_mobile_no,password
+            })
+
+            if (shop_login.length) {
+
+                // if users found
+
+                new Response(
+                    res,
+                    StatusCodes.OK
+                )._SuccessResponse(
+                    Message.ShopDetails.SuccessMessage.Fetch,
+                    shop_login
+                )
+
+            }
+            else {
+
+                // if no users found
+                new Response(
+                    res,
+                    StatusCodes.NOT_FOUND
+                )._ErrorMessage(
+                    Message.ShopDetails.FailureMessage.NotFound,
+                )
+            }
+        }
+        catch (err) {
+           
 
 
             // if something went wrong
@@ -166,12 +214,12 @@ const ShopController = {
             if (shopdetails.affectedRows) {
 
                 // sending success response to client
-                new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Update)
+                new Response(res)._SuccessResponse(Message.ShopDetails.SuccessMessage.Update)
 
             }
             else {
                 // failed response
-                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.UserManagement.SuccessMessage.Update)
+                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.ShopDetails.SuccessMessage.Update)
 
             }
         }
@@ -201,12 +249,12 @@ const ShopController = {
             if (deleteshops.affectedRows) {
 
                 // sending success response to client
-                new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Delete)
+                new Response(res)._SuccessResponse(Message.ShopDetails.SuccessMessage.Delete)
 
             }
             else {
                 // failed response
-                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.UserManagement.SuccessMessage.Delete)
+                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.ShopDetails.SuccessMessage.Delete)
 
             }
         }

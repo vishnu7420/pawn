@@ -23,9 +23,9 @@ export function SkeinAuthentication(req, res, next) {
 
                 console.log(user)
 
-                const refreshTokens = await UserRefreshToken.findAll({ user: user.id });
+                // const refreshTokens = await UserRefreshToken.findAll({ user: user.id });
 
-                req.user.ownsToken = token => !!refreshTokens.find(x => x.token === token);
+                // req.user.ownsToken = token => !!refreshTokens.find(x => x.token === token);
 
                 next()
             } else {

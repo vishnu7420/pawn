@@ -7,39 +7,38 @@
  */
 
 module.exports.Message = {
-    UserManagement: {
+    ShopDetails: {
         SuccessMessage: {
-            Create: "User created successfully !",
-            Update: "User updated successfully !",
-            Delete: "User deleted successfully !",
+            Create: "Shop created successfully !",
+            Update: "Shop updated successfully !",
+            Delete: "Shop deleted successfully !",
             Login: "Login successfull !",
-            Fetch: "Users fetched !",
+            Fetch: "Shop fetched !",
 
         },
         FailureMessage: {
-            Create: "User creation failed, kindly retry !",
-            Update: "User updation failed, kindly retry !",
-            Delete: "User deletion failed, kindly retry !",
+            Create: "Shop creation failed, kindly retry !",
+            Update: "Shop updation failed, kindly retry !",
+            Delete: "Shop deletion failed, kindly retry !",
             Login: "Login failed !",
-            NotFound: "User not found !",
+            NotFound: "Shop not found !",
         }
     },
-    UserRole: {
+    CustomerDetails: {
         SuccessMessage: {
-            Create: "Role created successfully !",
-            Update: "Role updated successfully !",
-            Delete: "Role deleted successfully !",
+            Create: "Customer created successfully !",
+            Update: "Customer updated successfully !",
+            Delete: "Customer deleted successfully !",
             Login: "Login successfull !",
-            Fetch: "Roles fetched !",
+            Fetch: "Customer fetched !",
 
         },
         FailureMessage: {
-            Create: "Role creation failed, kindly retry !",
-            Update: "Role updation failed, kindly retry !",
-            Delete: "Role deletion failed, kindly retry !",
+            Create: "Customer creation failed, kindly retry !",
+            Update: "Customer updation failed, kindly retry !",
+            Delete: "Customer deletion failed, kindly retry !",
             Login: "Login failed !",
-            NotFound: "Roles not found !",
-            InvalidId: "Invalid role id"
+            NotFound: "Customer not found !",
         }
     },
     Token: {

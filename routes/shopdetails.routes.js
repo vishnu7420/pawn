@@ -26,4 +26,9 @@ router.put('/update-all/:shop_id', ShopController.updateAallShopDetails)
 /* -------------------------------- delete all type of Shops -------------------------------- */
 router.delete('/delete-all/:shop_id', ShopController.deleteAllShopDetails)
 
+
+/* -------------------------------- Check Login-------------------------------- */
+router.post('/login', ShopController.login)
+
+
 module.exports = router;

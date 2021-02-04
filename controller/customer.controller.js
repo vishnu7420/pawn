@@ -60,7 +60,7 @@ const CustomerController = {
 
 
 
-            new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Create)
+            new Response(res)._SuccessResponse(Message.CustomerDetails.SuccessMessage.Create)
 
 
         }
@@ -101,7 +101,7 @@ const CustomerController = {
                     res,
                     StatusCodes.OK
                 )._SuccessResponse(
-                    Message.UserManagement.SuccessMessage.Fetch,
+                    Message.CustomerDetails.SuccessMessage.Fetch,
                     customer
                 )
 
@@ -113,7 +113,7 @@ const CustomerController = {
                     res,
                     StatusCodes.NOT_FOUND
                 )._ErrorMessage(
-                    Message.UserManagement.FailureMessage.NotFound,
+                    Message.CustomerDetails.FailureMessage.NotFound,
                 )
             }
         }
@@ -164,12 +164,12 @@ const CustomerController = {
             if (customerdetails.affectedRows) {
 
                 // sending success response to client
-                new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Update)
+                new Response(res)._SuccessResponse(Message.CustomerDetails.SuccessMessage.Update)
 
             }
             else {
                 // failed response
-                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.UserManagement.SuccessMessage.Update)
+                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.CustomerDetails.SuccessMessage.Update)
 
             }
         }
@@ -199,12 +199,12 @@ const CustomerController = {
             if (deletecustomer.affectedRows) {
 
                 // sending success response to client
-                new Response(res)._SuccessResponse(Message.UserManagement.SuccessMessage.Delete)
+                new Response(res)._SuccessResponse(Message.CustomerDetails.SuccessMessage.Delete)
 
             }
             else {
                 // failed response
-                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.UserManagement.SuccessMessage.Delete)
+                new Response(res, StatusCodes.NOT_FOUND)._ErrorMessage(Message.CustomerDetails.SuccessMessage.Delete)
 
             }
         }

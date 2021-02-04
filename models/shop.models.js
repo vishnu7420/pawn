@@ -83,6 +83,47 @@ const ShopModel = {
 
     },
 
+
+    
+    async getlogin(
+        { owner_mobile_no,password }
+    ) {
+
+
+        /* ------------------------ Setting initial variables ----------------------- */
+
+        let values = [],
+            // // Selecting columns
+            select = `shop_id,
+            shop_name,
+            shop_email as emailID,
+            shop_address1 as address1,
+            shop_address2 as address2,
+            city,
+            state,
+            pincode,
+            owner_mobile_no as contact_no,
+            status,
+            submitted_at,
+            activated_at,
+            activated_by,
+            payment_status,
+            last_payment_amount,
+            last_payment_at,
+            remarks,
+            shop_image`
+         
+
+
+        query = `SELECT ${select} FROM shop_details where owner_mobile_no = ${owner_mobile_no} and password = '${password}'`
+
+
+        // Query generator can generate a insert query based on object we passed
+
+        return await database.promise().query(QueryGenerator.format(query, values))
+
+    },
+
     /* --------------------------- Get users ends here -------------------------- */
 
 
