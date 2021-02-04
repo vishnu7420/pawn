@@ -41,7 +41,7 @@ var storage = multer.diskStorage({
 
 
         //reassign request upload field to file_name
-        req.body[req_field] = `http://localhost:3324/${req.file_destination}/${file_name}`;
+        req.body[req_field] = `${process.env.APP_URL}/${req.file_destination}/${file_name}`;
 
         cb(null, file_name);
     }
